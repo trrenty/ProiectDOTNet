@@ -10,8 +10,9 @@ Mengheres Mihaela
 
 # Trello link
 
-<a href = "https://trello.com/b/cN4sT4PJ/sarmale">Here</a>
+<a href = "https://trello.com/b/cN4sT4PJ/sarmale" target="_blank">Acces la Trello aici!</a>
 
+# Diagrame C4
 
 <img src="vj.png" alt="C4 DIAGRAM MODEL" style="width: 100%; height: auto;" border="10" />
 
