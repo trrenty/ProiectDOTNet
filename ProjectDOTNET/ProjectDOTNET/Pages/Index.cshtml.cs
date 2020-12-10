@@ -1,25 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+using ProjectDOTNET.Models;
+using ProjectDOTNET.Services;
 
 namespace ProjectDOTNET.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly EquationServices _service;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        [BindProperty]
+        public string Title { get; set; }
+        public IndexModel(EquationServices service)
         {
-            _logger = logger;
+            _service = service;
         }
+
+        public IList<Equation> GetEquations { get; set; }
 
         public void OnGet()
         {
+            GetEquations = _service.Get().ToList();
+        }
 
+        public void OnPostFindTitle()
+        {
+            Title = (Title == null) ? "" : Title;
+            GetEquations = _service.FindByTitle(Title).ToList();
         }
     }
 }

@@ -12,19 +12,21 @@
         <canvas id="can" width="400" height="400" style="border:2px solid;"></canvas>
     </div>
 
-    @*<div style="top:12%;left:43%;">Choose Color</div>*@
-    @*<div style="top:15%;left:45%;width:10px;height:10px;background:green;" id="green" onclick="color(this)"></div>
-        <div style="top:15%;left:46%;width:10px;height:10px;background:blue;" id="blue" onclick="color(this)"></div>
-        <div style="top:15%;left:47%;width:10px;height:10px;background:red;" id="red" onclick="color(this)"></div>
-        <div style="top:17%;left:45%;width:10px;height:10px;background:yellow;" id="yellow" onclick="color(this)"></div>
-        <div style="top:17%;left:46%;width:10px;height:10px;background:orange;" id="orange" onclick="color(this)"></div> *@
     <div style="width: 100%; display:flex; justify-content: space-evenly; align-items: center;">
         <div style="font-size: 2em; font-weight: bold;">Black</div>
         <div style="width:50px;height:50px;background:black;" id="black" onclick="color(this)"></div>
         <div style="font-size: 2em; font-weight: bold;">Eraser</div>
         <div style="width:50px;height:50px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
-
-        <input class="btn btn-secondary" type="button" value="GetResult" id="btn" size="30" onclick="save()" style="">
+        @* image to base64 *@
+        <script>
+            (function (w, d) {
+                'use strict';
+                var svg = new XMLSerializer().serializeToString(d.getElementById('can'));
+                var base64 = w.btoa(svg);
+                d.getElementById('base').appendChild(d.createTextNode('data:image/svg+xml;base64,' + base64));
+            }(window, document));
+        </script>
+        <input class="btn btn-secondary" type="button" value="GetResult" id="btn" size="30" onclick="sendPostRequestToImageRecognizer()" style="">
         <input class="btn btn-secondary" type="button" value="clear" id="clr" size="23" onclick="erase()" style="">
     </div>
     <img id="canvasimg" style="top:10%;left:52%;" style="display:none;">
