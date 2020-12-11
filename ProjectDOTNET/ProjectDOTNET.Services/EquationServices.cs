@@ -2,6 +2,7 @@
 using ProjectDOTNET.Models;
 using System.Collections.Generic;
 
+namespace ProjectDOTNET.Services
 {
     public class EquationServices
     {
