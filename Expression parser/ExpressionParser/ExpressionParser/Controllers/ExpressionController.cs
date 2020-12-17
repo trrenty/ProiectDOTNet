@@ -3,6 +3,7 @@ using ExpressionParser.Parser;
 using ExpressionParser.Repo;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace ExpressionParser.Controllers
 {
@@ -42,11 +43,18 @@ namespace ExpressionParser.Controllers
         {
             string expression = expr.Expresie;
 
-            string postfix = EqParser.ConvertToPostfix(expression);
+            List<Token> postfix = EqParser.ConvertToPostfixToken(expression);
 
-            double result = EqParser.EvaluateExpr(postfix);
+            double result = EqParser.EvaluateExprTokens(postfix);
 
-            Expression ret = new Expression { Expresie = postfix, Result = result.ToString() };
+            string postfixRex = "";
+
+            foreach (var t in postfix)
+            {
+                postfixRex += t;
+            }
+
+            Expression ret = new Expression { Expresie = postfixRex, Result = result.ToString() };
 
             return ret;
         }
