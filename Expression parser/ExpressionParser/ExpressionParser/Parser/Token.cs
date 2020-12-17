@@ -60,6 +60,7 @@ namespace ExpressionParser.Parser
             // -10x+3=-11x-4
 
             List<Token> finalTokens = new List<Token>();
+            
 
             int lastPos = 0;
             string[] sides = str.Split("=");
