@@ -1,0 +1,29 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/v1/Expression/{encodedExpression}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dotnetprj.azure-api.net",
+          "Port": 443
+        }
+      ],
+      "DownstreamHttpVersion": "1.1",
+      "UpstreamHeaderTransform": {
+        "Ocp-Apim-Subscription-Key": "d28b6f8920de44a3b6f07c15807814a6"
+      },
+      "UpstreamPathTemplate": "/Expression/{encodedExpression}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+  "GlobalCOnfiguration": {
+    "BaseUrl": "http://localhost:7000/"
+  },
+  "HttpHandlerOptions": {
+    "AllowAutoRedirect": true,
+    "UseCookieContainer": true,
+    "UseTracing": true,
+    "MaxConnectionsPerServer": 100
+  }
+}
