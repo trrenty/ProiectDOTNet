@@ -248,8 +248,8 @@ function draw(nr) {
     }
      else if (nr == 5) {
          ctx5.beginPath();
-         ctx5.moveTo(prevX4, prevY4);
-         ctx5.lineTo(currX4, currY4);
+         ctx5.moveTo(prevX5, prevY5);
+         ctx5.lineTo(currX5, currY5);
          ctx5.strokeStyle = x;
          ctx5.lineWidth = y;
          ctx5.stroke();
@@ -257,8 +257,8 @@ function draw(nr) {
     }
      else {
          ctx6.beginPath();
-         ctx6.moveTo(prevX4, prevY4);
-         ctx6.lineTo(currX4, currY4);
+         ctx6.moveTo(prevX6, prevY6);
+         ctx6.lineTo(currX6, currY6);
          ctx6.strokeStyle = x;
          ctx6.lineWidth = y;
          ctx6.stroke();
@@ -320,8 +320,8 @@ function save() {
 
 function findxy(res, e, nr) {
       if (nr == 2) {
-        var offsetLeft = document.getElementById("canvasContainer").offsetLeft;
-        var offsetTop = document.getElementById("canvasContainer").offsetTop;
+        var offsetLeft = document.getElementById("can2").offsetLeft;
+        var offsetTop = document.getElementById("can2").offsetTop;
         if (res == 'down') {
             prevX2 = currX2;
             prevY2 = currY2;
@@ -354,8 +354,8 @@ function findxy(res, e, nr) {
         }
     }
    else if (nr == 1) {
-        var offsetLeft = document.getElementById("canvasContainer").offsetLeft;
-        var offsetTop = document.getElementById("canvasContainer").offsetTop;
+        var offsetLeft = document.getElementById("can1").offsetLeft;
+        var offsetTop = document.getElementById("can1").offsetTop;
         if (res == 'down') {
             prevX1 = currX1;
             prevY1 = currY1;
@@ -387,9 +387,9 @@ function findxy(res, e, nr) {
             }
         }
     }
-    else if(nr == 4){
-        var offsetLeft = document.getElementById("canvasContainer").offsetLeft;
-        var offsetTop = document.getElementById("canvasContainer").offsetTop;
+    else if(nr == 3){
+        var offsetLeft = document.getElementById("can3").offsetLeft;
+        var offsetTop = document.getElementById("can3").offsetTop;
         if (res == 'down') {
             prevX3 = currX3;
             prevY3= currY3;
@@ -422,56 +422,56 @@ function findxy(res, e, nr) {
         }
     }
       else if (nr == 4) {
-          var offsetLeft = document.getElementById("canvasContainer").offsetLeft;
-          var offsetTop = document.getElementById("canvasContainer").offsetTop;
+          var offsetLeft = document.getElementById("can4").offsetLeft;
+          var offsetTop = document.getElementById("can4").offsetTop;
           if (res == 'down') {
-              prevX3 = currX3;
-              prevY3 = currY3;
-              currX3 = e.clientX - offsetLeft;
-              currY3 = e.clientY - offsetTop;
+              prevX4 = currX4;
+              prevY4 = currY4;
+              currX4 = e.clientX - offsetLeft;
+              currY4 = e.clientY - offsetTop;
 
-              console.log(canvas3.offsetLeft);
+              console.log(canvas4.offsetLeft);
 
-              flag3 = true;
-              dot_flag3 = true;
-              if (dot_flag3) {
-                  ctx3.beginPath();
-                  ctx3.fillStyle = x;
-                  ctx3.fillRect(currX3, currY3, 2, 2);
-                  ctx3.closePath();
-                  dot_flag3 = false;
+              flag4 = true;
+              dot_flag4 = true;
+              if (dot_flag4) {
+                  ctx4.beginPath();
+                  ctx4.fillStyle = x;
+                  ctx4.fillRect(currX4, currY4, 2, 2);
+                  ctx4.closePath();
+                  dot_flag4 = false;
               }
           }
           if (res == 'up' || res == "out") {
-              flag3 = false;
+              flag4 = false;
           }
           if (res == 'move') {
-              if (flag3) {
-                  prevX3 = currX3;
-                  prevY3 = currY3;
-                  currX3 = e.clientX - offsetLeft;
-                  currY3 = e.clientY - offsetTop;
-                  draw(3);
+              if (flag4) {
+                  prevX4 = currX4;
+                  prevY4 = currY4;
+                  currX4 = e.clientX - offsetLeft;
+                  currY4 = e.clientY - offsetTop;
+                  draw(4);
               }
           }
       }
-      else if (nr == 4) {
-          var offsetLeft = document.getElementById("canvasContainer").offsetLeft;
-          var offsetTop = document.getElementById("canvasContainer").offsetTop;
+      else if (nr == 5) {
+          var offsetLeft = document.getElementById("can5").offsetLeft;
+          var offsetTop = document.getElementById("can5").offsetTop;
           if (res == 'down') {
-              prevX3 = currX3;
-              prevY3 = currY3;
-              currX3 = e.clientX - offsetLeft;
-              currY3 = e.clientY - offsetTop;
+              prevX5 = currX5;
+              prevY5 = currY5;
+              currX5 = e.clientX - offsetLeft;
+              currY5 = e.clientY - offsetTop;
 
               console.log(canvas3.offsetLeft);
 
-              flag3 = true;
-              dot_flag3 = true;
-              if (dot_flag3) {
-                  ctx3.beginPath();
+              flag5 = true;
+              dot_flag5 = true;
+              if (dot_flag5) {
+                  ctx5.beginPath();
                   ctx5.fillStyle = x;
-                  ctx5.fillRect(currX3, currY3, 2, 2);
+                  ctx5.fillRect(currX5, currY5, 2, 2);
                   ctx5.closePath();
                   dot_flag5 = false;
               }
@@ -490,8 +490,8 @@ function findxy(res, e, nr) {
           }
       }
       else {
-          var offsetLeft = document.getElementById("canvasContainer").offsetLeft;
-          var offsetTop = document.getElementById("canvasContainer").offsetTop;
+          var offsetLeft = document.getElementById("can6").offsetLeft;
+          var offsetTop = document.getElementById("can6").offsetTop;
           if (res == 'down') {
               prevX6 = currX6;
               prevY6 = currY6;
