@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "src\ApiGateway\G
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{44E9D61F-923B-41C9-97B7-CDBC92ADB0B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "src\WebApp\Frontend\Frontend.csproj", "{F67ECFA3-65B4-49A2-AAB0-5F43F2644943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "src\WebApp\Frontend\Frontend.csproj", "{F67ECFA3-65B4-49A2-AAB0-5F43F2644943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

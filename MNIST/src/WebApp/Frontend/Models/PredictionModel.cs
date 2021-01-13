@@ -7,6 +7,8 @@ namespace Frontend.Models
 {
     public class PredictionModel
     {
-        public string ImageBase64 { get; set; }
+        public int Prediction { get; set; }
+        public double[] Scores { get; set; }
+        public string PixelValues { get; set; }
     }
 }

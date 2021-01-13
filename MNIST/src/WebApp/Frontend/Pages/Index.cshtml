@@ -23,23 +23,22 @@
             function sendstuff() {
                 var canv = document.getElementById("can");
                 var dataURL = canv.toDataURL();
-                
+
                 var pathname = window.location.pathname;
                 var handler = '?handler=returnResult';
                 var actionpath = pathname + handler;
 
                 $.ajax({
-                    //dataType: 'json',
                     url: actionpath,
                     type: 'POST',
                     data: JSON.stringify(dataURL),
-                    contentType:'application/json; charset=utf-8',
-                    success: function () {
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (msg, status, jqXHR) {
                         console.log("success!");
-                        console.log(data);
+                        console.log(msg);
+                        $("#result").text("The result is " + msg);
                     },
                     error: function () {
-                        //alert("AJAX Request Failed, Contact Support");
                         console.log("error!");
                         console.log(data);
                     }
@@ -47,7 +46,9 @@
             }
         </script>
         <button class="btn btn-secondary" id="btn" size="30" value="GetResult" onclick="sendstuff()">Get Result</button>
+
         <input class="btn btn-secondary" type="button" value="clear" id="clr" size="23" onclick="erase()" style="">
     </div>
     <img id="canvasimg" style="top:10%;left:52%;" style="display:none;">
 </div>
+<p style ="text-align: center; font-size: 2em; font-weight: bolder; color: darkgreen" id="result"></p>

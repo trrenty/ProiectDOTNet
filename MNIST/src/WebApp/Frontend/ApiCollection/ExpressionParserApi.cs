@@ -26,10 +26,6 @@ namespace Frontend.ApiCollection
                                .AddToPath(expressionEncoded)
                                .HttpMethod(HttpMethod.Get)
                                .GetHttpMessage();
-
-            //var json = JsonConvert.SerializeObject(expression);
-            //message.Content = new StringContent(expressionEncoded, Encoding.UTF8, "application/json");
-
             return await SendRequest<ExpressionModel>(message);
         }
 
@@ -42,7 +38,6 @@ namespace Frontend.ApiCollection
 
             var json = JsonConvert.SerializeObject(model);
             message.Content = new StringContent(json, Encoding.UTF8, "application/json");
-
             return await SendRequest<ExpressionModel>(message);
         }
     }

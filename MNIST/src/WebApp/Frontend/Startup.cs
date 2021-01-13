@@ -38,17 +38,19 @@ namespace Frontend
 
             // add api dependecy
             services.AddTransient<IExpressionParserApi, ExpressionParserApi>();
+            services.AddTransient<IImageRecognizerApi, ImageRecognizerApi>();
 
             #endregion
             //services.AddMvc(options =>
             //{
             //    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             //});
+            //services.AddMvc().AddRazorOptions(options => options.AllowRecompilingViewsOnFileChange = true);
             services.AddMvc()
                 .AddRazorPagesOptions(options => {
                     options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
                 }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

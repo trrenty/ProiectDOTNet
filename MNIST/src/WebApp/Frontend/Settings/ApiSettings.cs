@@ -5,5 +5,7 @@ namespace Frontend.Settings
     {
         public string BaseAddress { get; set; }
         public string ExpressionParserPath { get; set; }
+        public string ImageRecognizerPath { get; set; }
+
     }
 }

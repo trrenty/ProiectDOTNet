@@ -23,7 +23,6 @@ namespace Frontend.ApiCollection.Infrastructure
         {
             _apiBuilder.AddToPath(path);
             _request.RequestUri = _apiBuilder.GetUri();
-
             return this;
         }
 

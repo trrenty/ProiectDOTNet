@@ -15,15 +15,41 @@
       },
       "UpstreamPathTemplate": "/Expression/{encodedExpression}",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/v1/Expression",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dotnetprj.azure-api.net",
+          "Port": 443
+        }
+      ],
+      "DownstreamHttpVersion": "1.1",
+      "UpstreamHeaderTransform": {
+        "Ocp-Apim-Subscription-Key": "d28b6f8920de44a3b6f07c15807814a6"
+      },
+      "UpstreamPathTemplate": "/Expression",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/v1/Predictions",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ml-microservice.azure-api.net",
+          "Port": 443
+        }
+      ],
+      "DownstreamHttpVersion": "1.1",
+      "UpstreamHeaderTransform": {
+        "Ocp-Apim-Subscription-Key": "d00ec05361dd4d1caf3acecb9c1b5a8a"
+      },
+      "UpstreamPathTemplate": "/Predictions",
+      "UpstreamHttpMethod": [ "Post" ]
     }
   ],
   "GlobalCOnfiguration": {
-    "BaseUrl": "http://localhost:7000/"
-  },
-  "HttpHandlerOptions": {
-    "AllowAutoRedirect": true,
-    "UseCookieContainer": true,
-    "UseTracing": true,
-    "MaxConnectionsPerServer": 100
+    "BaseUrl": "http://localhost:7000"
   }
 }
