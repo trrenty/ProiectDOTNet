@@ -1,34 +1,26 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/v1/Expression/{encodedExpression}",
+      "DownstreamPathTemplate": "/expression/{encodedExpression}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "dotnetprj.azure-api.net",
+          "Host": "06923d5daf8a.ngrok.io",
           "Port": 443
         }
       ],
-      "DownstreamHttpVersion": "1.1",
-      "UpstreamHeaderTransform": {
-        "Ocp-Apim-Subscription-Key": "d28b6f8920de44a3b6f07c15807814a6"
-      },
       "UpstreamPathTemplate": "/Expression/{encodedExpression}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/v1/Expression",
+      "DownstreamPathTemplate": "/expression",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "dotnetprj.azure-api.net",
+          "Host": "06923d5daf8a.ngrok.io",
           "Port": 443
         }
       ],
-      "DownstreamHttpVersion": "1.1",
-      "UpstreamHeaderTransform": {
-        "Ocp-Apim-Subscription-Key": "d28b6f8920de44a3b6f07c15807814a6"
-      },
       "UpstreamPathTemplate": "/Expression",
       "UpstreamHttpMethod": [ "Post" ]
     },

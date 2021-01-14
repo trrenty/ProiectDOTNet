@@ -3,6 +3,7 @@ using Frontend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,20 +29,38 @@ namespace Frontend.Pages
             return Page();
         }
 
-        public async Task<ActionResult> OnPostReturnResultAsync([FromBody]string imageBase64)
+        public async Task<ActionResult> OnPostReturnResultAsync([FromBody]string imagesBase64)
         {
             Console.WriteLine("the image is");
-            Console.WriteLine(imageBase64); //"data:image/png;base64,"
-            imageBase64 = imageBase64.Replace("data:image/png;base64,", "");
+            Console.WriteLine(imagesBase64); //"data:image/png;base64,"
+
+            String[] encodings = imagesBase64.Split("data:image/png;base64,");
+            encodings = encodings.Skip(1).ToArray();
+            var predictedExpression = "";
             // send image and receive response to ML Microservice
-            var predictedExpression = await _imageRecognizerApi.SendImage(imageBase64);
-            // check response from ML Microservice
-            //ExpressionModel model = new ExpressionModel("5+30", "35");
-            //create expression with post
-            //var result = await _expressionParserApi.CreateExpression(model);
+            for (int index=0; index <6; index++)
+            {
+                var expression = await _imageRecognizerApi.SendImage(encodings[index]);
+                if ((expression.Prediction).ToString() == "11")
+                {
+                    predictedExpression += "+";
+                }
+                else if ((expression.Prediction).ToString() == "10")
+                {
+                    predictedExpression += "x";
+                }
+                else if ((expression.Prediction).ToString() == "12")
+                {
+                    predictedExpression += "=";
+                }
+                else {
+                    predictedExpression += expression.Prediction;
+                }
+            }
+            Console.WriteLine(predictedExpression);
             // transform in base64
-            string expressionEncoded = Convert.ToBase64String(Encoding.ASCII.GetBytes((predictedExpression.Prediction).ToString()));
-            //receive response from Parser 
+            string expressionEncoded = Convert.ToBase64String(Encoding.ASCII.GetBytes(predictedExpression));
+            // receive response from Parser 
             var result = await _expressionParserApi.GetExpression(expressionEncoded);
             this.Result = result.Result;
             return Content(this.Result);

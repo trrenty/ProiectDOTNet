@@ -4,12 +4,19 @@
     ViewData["Title"] = "Home page";
 }
 
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <div>
     <h1 style="">Scrieti o ecuatie!</h1>
 
-    <div id="canvasContainer" style="width: 100%; height: 500px; top: 0; left: 0; display: block; position: relative;">
-        <canvas id="can" width="400" height="400" style="border:2px solid;"></canvas>
+    <div id="canvasContainer" style="width: 100%; height: 500px; top: 0; left: 0;display:flex; justify-content: space-evenly; align-items: center;">
+        <canvas id="can1" class="can" width="200" height="200" style="border:2px solid;"></canvas>
+        <canvas id="can2" class="can" width="200" height="200" style="border:2px solid;"></canvas>
+        <canvas id="can3" class="can" width="200" height="200" style="border:2px solid;"></canvas>
+        <canvas id="can4" class="can" width="200" height="200" style="border:2px solid;"></canvas>
+        <canvas id="can5" class="can" width="200" height="200" style="border:2px solid;"></canvas>
+        <canvas id="can6" class="can" width="200" height="200" style="border:2px solid;"></canvas>
     </div>
 
     <div style="width: 100%; display:flex; justify-content: space-evenly; align-items: center;">
@@ -21,17 +28,65 @@
         <input type="hidden" id="SendA" value="" />
         <script>
             function sendstuff() {
-                var canv = document.getElementById("can");
-                var dataURL = canv.toDataURL();
+                var canvas1 = document.getElementById("can1");
+                var img1 = canvas1.toDataURL();
+                var canvas2 = document.getElementById("can2");
+                var img2 = canvas2.toDataURL();
+                var canvas3 = document.getElementById("can3");
+                var img3 = canvas3.toDataURL();
+                var canvas4 = document.getElementById("can4");
+                var img4 = canvas4.toDataURL();
+                var canvas5 = document.getElementById("can5");
+                var img5 = canvas5.toDataURL();
+                var canvas6 = document.getElementById("can6");
+                var img6 = canvas6.toDataURL();
+
+                //var dataURL = document.getElementById("can").toDataURL();
+                var canvasReusable = document.createElement("canvas");
+                var ctxReusable = canvasReusable.getContext("2d");
+                canvasReusable.width = 28;
+                canvasReusable.height = 28;
+                var imageReusable = new Image();
+                imageReusable.src = img1;  // dataURL
+                ctxReusable.drawImage(imageReusable, 0, 0, 28, 28);
+                ctxReusable.drawImage(document.getElementById("can1"), 0, 0, 28, 28);
+                var img1 = canvasReusable.toDataURL();
+                ctxReusable.clearRect(0, 0, canvasReusable.width, canvasReusable.height);
+                imageReusable.src = img2;  // dataURL
+                ctxReusable.drawImage(imageReusable, 0, 0, 28, 28);
+                ctxReusable.drawImage(document.getElementById("can2"), 0, 0, 28, 28);
+                var img2 = canvasReusable.toDataURL();
+                ctxReusable.clearRect(0, 0, canvasReusable.width, canvasReusable.height);
+                imageReusable.src = img3;  // dataURL
+                ctxReusable.drawImage(imageReusable, 0, 0, 28, 28);
+                ctxReusable.drawImage(document.getElementById("can3"), 0, 0, 28, 28);
+                var img3 = canvasReusable.toDataURL();
+                ctxReusable.clearRect(0, 0, canvasReusable.width, canvasReusable.height);
+                imageReusable.src = img4;  // dataURL
+                ctxReusable.drawImage(imageReusable, 0, 0, 28, 28);
+                ctxReusable.drawImage(document.getElementById("can4"), 0, 0, 28, 28);
+                var img4 = canvasReusable.toDataURL();
+                ctxReusable.clearRect(0, 0, canvasReusable.width, canvasReusable.height);
+                imageReusable.src = img5;  // dataURL
+                ctxReusable.drawImage(imageReusable, 0, 0, 28, 28);
+                ctxReusable.drawImage(document.getElementById("can5"), 0, 0, 28, 28);
+                var img5 = canvasReusable.toDataURL();
+                ctxReusable.clearRect(0, 0, canvasReusable.width, canvasReusable.height);
+                imageReusable.src = img6;  // dataURL
+                ctxReusable.drawImage(imageReusable, 0, 0, 28, 28);
+                ctxReusable.drawImage(document.getElementById("can6"), 0, 0, 28, 28);
+                var img6 = canvasReusable.toDataURL();
+                ctxReusable.clearRect(0, 0, canvasReusable.width, canvasReusable.height);
 
                 var pathname = window.location.pathname;
                 var handler = '?handler=returnResult';
                 var actionpath = pathname + handler;
+                var concatenatedEncodings = img1.concat(img2.concat(img3.concat(img4.concat(img5.concat(img6)))))
 
                 $.ajax({
                     url: actionpath,
                     type: 'POST',
-                    data: JSON.stringify(dataURL),
+                    data: JSON.stringify(concatenatedEncodings),
                     contentType: 'application/json; charset=utf-8',
                     success: function (msg, status, jqXHR) {
                         console.log("success!");
@@ -44,6 +99,7 @@
                     }
                 });
             }
+
         </script>
         <button class="btn btn-secondary" id="btn" size="30" value="GetResult" onclick="sendstuff()">Get Result</button>
 
